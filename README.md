@@ -49,7 +49,7 @@ MONGO_URL=your_mongodb_url
 EMAIL_USER=your_email
 EMAIL_PASS=your_password
 JWT_ADMIN_SECRET=your_secret
-
+```bash
 ##  **Start the backend server**
 
 
