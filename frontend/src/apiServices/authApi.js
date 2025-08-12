@@ -38,3 +38,10 @@ export const runSimulation = async (inputs, token) => {
   });
   return response.data;  // Expected: KPIs and results
 };
+
+export const getAllSimulationResults = async (token) => {
+  const response = await axios.get(`${BASE_URL}/user/get-all-simulation`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return response.data; // array of results
+};

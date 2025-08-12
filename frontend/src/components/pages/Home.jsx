@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SimulationPage from "./SimulationPage";
+import Dashboard from "./Dashboard";
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -50,7 +51,7 @@ const Home = () => {
           <div>
             <h2 className="text-xl font-semibold mb-4">Dashboard</h2>
             <p>Total Profit, Efficiency Score, Charts go here.</p>
-            {/* TODO: Replace with actual Dashboard component */}
+            <Dashboard token={token}/>
           </div>
         )}
 
