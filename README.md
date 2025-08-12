@@ -41,4 +41,6 @@ The platform enables logistics managers to:
    git clone https://github.com/yourusername/greencart-logistics.git
    cd greencart-logistics/backend
 
-npm install
+Install dependencies
+   ````bash
+   npm install
