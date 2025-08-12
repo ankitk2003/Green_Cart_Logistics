@@ -75,9 +75,9 @@ The frontend will run at: **http://localhost:5173** (or your default Vite port)
 
 ---
 
-## 🌱 Environment Variables
+##  Environment Variables
 
-### Backend (`.env`)
+### Backend (`server.env`)
 | Variable          | Description |
 |-------------------|-------------|
 | `MONGO_URL`       | MongoDB connection string |
