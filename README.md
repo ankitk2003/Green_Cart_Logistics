@@ -36,19 +36,16 @@ The platform enables logistics managers to:
 ## ⚙️ Setup Instructions
 
 ### **Backend Setup**
-1. **Clone the repository**
+1. **Clone the repository & install dependencies**
    ```bash
    git clone https://github.com/yourusername/greencart-logistics.git
    cd greencart-logistics/backend
-
-**Install dependencies**
-```bash
    npm install
 
-**Create a .env file in the backend directory:**
 
-```bash
-MONGO_URL=
-EMAIL_USER=
-EMAIL_PASS=
-JWT_ADMIN_SECRET=
+Create a .env file in the backend directory:
+
+MONGO_URL=your_mongodb_url
+EMAIL_USER=your_email
+EMAIL_PASS=your_password
+JWT_ADMIN_SECRET=your_secret
