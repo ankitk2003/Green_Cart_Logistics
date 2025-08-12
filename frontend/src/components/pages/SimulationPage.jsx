@@ -113,7 +113,7 @@ const SimulationPage = ({ token }) => {
         </div>
 
         <button
-          className="bg-amber-300 p-2 rounded-4xl text-blue-400"
+          className="bg-amber-300 p-2 rounded-4xl text-blue-700"
           type="submit"
           disabled={loading}
         >
@@ -141,6 +141,7 @@ const SimulationPage = ({ token }) => {
           <p>
             <strong>Fuel Cost Breakdown:</strong> {results.fuelCostBreakdown}
           </p>
+          <p><strong>go to the Dashborad tab to see the charts</strong></p>
           {/* You can add charts here for better visualization */}
         </div>
       )}

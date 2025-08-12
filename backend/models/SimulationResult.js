@@ -9,8 +9,9 @@ const assignmentSchema = new mongoose.Schema({
 });
 
 const simulationResultSchema = new mongoose.Schema({
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }, 
   totalProfit: { type: Number, required: true },
-  efficiency: { type: Number, required: true },         // percentage
+  efficiency: { type: Number, required: true }, // percentage
   totalOrders: { type: Number, required: true },
   onTimeDeliveries: { type: Number, required: true },
   lateDeliveries: { type: Number, required: true },
@@ -18,6 +19,9 @@ const simulationResultSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
-const SimulationResult = mongoose.model("SimulationResult", simulationResultSchema);
+const SimulationResult = mongoose.model(
+  "SimulationResult",
+  simulationResultSchema
+);
 
 export default SimulationResult;

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import SimulationPage from "./SimulationPage";
 import Dashboard from "./Dashboard";
+import CrudManagement from "./CrudManagement";
 
 const Home = () => {
-  const [activeTab, setActiveTab] = useState("dashboard");
+  const [activeTab, setActiveTab] = useState("simulation");
   const token=localStorage.getItem("token")
   return (
     <div className="max-w-6xl mx-auto p-6">
@@ -67,7 +68,7 @@ const Home = () => {
           <div>
             <h2 className="text-xl font-semibold mb-4">Management</h2>
             <p>CRUD interfaces for Drivers, Routes, Orders go here.</p>
-            {/* TODO: Replace with actual Management component */}
+            <CrudManagement token={token}/>
           </div>
         )}
       </div>

@@ -30,7 +30,7 @@ const Login = () => {
       setLoading(false);
       localStorage.setItem("token", data.token);
       localStorage.setItem("email", formData.email);
-      navigate("/dashboard"); 
+      navigate("/home"); 
     } catch (err) {
       setLoading(false);
       setError(err.response?.data?.message || "Login failed. Please try again.");

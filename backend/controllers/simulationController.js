@@ -10,6 +10,7 @@ export const getSimulation = async (req, res) => {
       maxHoursPerDriverPerDay,
     } = req.body;
 
+    console.log(req.body);
     if (
       numberOfAvailableDrivers == null ||
       routeStartTime == null ||
@@ -43,19 +44,19 @@ export const getSimulation = async (req, res) => {
       if (!route) return;
 
       let actualRouteTime = route.base_time_min;
-    //   console.log(driver.past_week_hours[6])
+      //   console.log(driver.past_week_hours[6])
       if (driver.past_week_hours[6] > 8) {
         actualRouteTime *= 1.3;
       }
 
       let penalty = 0;
       let bonus = 0;
-    //   const deliveryDeadline = route.base_time_min + 10;
+      //   const deliveryDeadline = route.base_time_min + 10;
       function timeStringToMinutes(timeStr) {
         const [hours, minutes] = timeStr.split(":").map(Number);
         return hours * 60 + minutes;
       }
-const deliveryDeadline = route.base_time_min + 10;
+      const deliveryDeadline = route.base_time_min + 10;
       const actualDeliveryMinutes = timeStringToMinutes(order.delivery_time);
       const isLate = actualDeliveryMinutes > deliveryDeadline;
 
@@ -88,7 +89,8 @@ const deliveryDeadline = route.base_time_min + 10;
     const efficiency =
       totalOrders > 0 ? (onTimeDeliveries / totalOrders) * 100 : 0;
 
- const simulationResult = new SimulationResult({
+    const simulationResult = new SimulationResult({
+      userId: req.userId,
       totalProfit,
       efficiency,
       totalOrders,
@@ -98,7 +100,6 @@ const deliveryDeadline = route.base_time_min + 10;
     });
 
     await simulationResult.save();
-
 
     res.json({
       totalProfit,
@@ -111,5 +112,15 @@ const deliveryDeadline = route.base_time_min + 10;
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Server error" });
+  }
+};
+
+export const returnSimulations = async (req, res) => {
+  try {
+    const result = await SimulationResult.find({ userId: req.userId });
+    return res.json(result);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Server error" });
   }
 };

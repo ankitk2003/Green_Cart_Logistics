@@ -1,15 +1,16 @@
 import axios from 'axios';
 
-const BASE_URL = import.meta.env.VITE_BASE_URL +"/orders";
-export const getOrders = async (token) => {
+const BASE_URL = import.meta.env.VITE_BASE_URL + '/drivers'; 
+
+export const getDrivers = async (token) => {
   const response = await axios.get(BASE_URL, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return response.data;
 };
 
-export const addOrder = async (orderData, token) => {
-  const response = await axios.post(BASE_URL, orderData, {
+export const addDriver = async (driverData, token) => {
+  const response = await axios.post(BASE_URL, driverData, {
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
@@ -18,8 +19,8 @@ export const addOrder = async (orderData, token) => {
   return response.data;
 };
 
-export const updateOrder = async (orderId, updatedData, token) => {
-  const response = await axios.put(`${BASE_URL}/${orderId}`, updatedData, {
+export const updateDriver = async (driverId, updatedData, token) => {
+  const response = await axios.put(`${BASE_URL}/${driverId}`, updatedData, {
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
@@ -28,8 +29,8 @@ export const updateOrder = async (orderId, updatedData, token) => {
   return response.data;
 };
 
-export const deleteOrder = async (orderId, token) => {
-  const response = await axios.delete(`${BASE_URL}/${orderId}`, {
+export const deleteDriver = async (driverId, token) => {
+  const response = await axios.delete(`${BASE_URL}/${driverId}`, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return response.data;

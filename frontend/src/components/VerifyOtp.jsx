@@ -38,7 +38,7 @@ const VerifyOtp = () => {
       setLoading(false);
       localStorage.setItem("token", data.token);
       localStorage.removeItem("email"); // clear stored email after verification
-      navigate("/dashboard"); // redirect after success
+      navigate("/home"); // redirect after success
     } catch (err) {
       setLoading(false);
       setError(err.response?.data?.message || "OTP verification failed.");

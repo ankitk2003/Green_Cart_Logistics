@@ -55,7 +55,7 @@ export const Signup = async (req, res) => {
       text: `Your OTP is ${otp}. It expires in 5 minutes.`,
     });
 
-    res.status(200).json({ message: "OTP sent to email" });
+    res.status(200).json({ message: "OTP sent to email","email":email });
   } catch (err) {
     console.error("Error in admin signup:", err);
     res.status(500).json({ message: "Internal server error" });

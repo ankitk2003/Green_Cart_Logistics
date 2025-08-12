@@ -7,8 +7,10 @@ import driverRouter from "./routes/driverRoutes.js";
 import orderRouter from "./routes/orderRoutes.js";
 import routeRouter from "./routes/routeRoutes.js";
 dotenv.config({ path: "./server.env" }); 
-
+import cors from "cors"
 const app = express();
+app.use(cors())
+app.use(express.json());
 app.use(express.json())
 app.use("/api/user",adminRouter)
 app.use("/api/drivers", driverRouter);

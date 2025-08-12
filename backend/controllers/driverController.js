@@ -11,9 +11,12 @@ export const getDrivers = async (req, res) => {
 
 export const createDriver = async (req, res) => {
   try {
+        console.log("Creating driver with data:", req.body);  
+
     const driver = await Driver.create(req.body);
     res.status(201).json(driver);
   } catch (err) {
+    console.log(err.message)
     res.status(400).json({ error: err.message });
   }
 };
