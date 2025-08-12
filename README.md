@@ -57,3 +57,29 @@ npm run dev
 
 
 The backend will run at: http://localhost:3000
+
+
+---
+
+### **Frontend Setup**
+```bash
+# Navigate to the frontend folder
+cd ../frontend
+
+# Install dependencies
+npm install
+
+# Create a .env file in the frontend directory
+# and add the following environment variable:
+VITE_BASE_URL=http://localhost:3000
+
+# Start the frontend development server
+npm run dev
+
+
+| Variable           | Description                       |
+| ------------------ | --------------------------------- |
+| MONGO\_URL         | MongoDB connection string         |
+| EMAIL\_USER        | Email account for notifications   |
+| EMAIL\_PASS        | Password for email account        |
+| JWT\_ADMIN\_SECRET | Secret key for JWT authentication |
