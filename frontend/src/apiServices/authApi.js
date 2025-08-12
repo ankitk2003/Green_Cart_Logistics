@@ -11,18 +11,30 @@ export const signup = async (signupData) => {
 };
 
 export const login = async (loginData) => {
-  const response = await axios.post(`${BASE_URL}/login`, loginData, {
+  const response = await axios.post(`${BASE_URL}/user/signin`, loginData, {
     headers: { 'Content-Type': 'application/json' },
   });
   return response.data; // usually returns token, user info etc.
 };
 
-export const verifyOtp = async (otpData, token = null) => {
-  const headers = { 'Content-Type': 'application/json' };
-  if (token) headers['Authorization'] = `Bearer ${token}`;
+export const verifyOtp = async (otpData) => {
+  const headers = { "Content-Type": "application/json" };
 
-  const response = await axios.post(`${BASE_URL}/verify-otp`, otpData, {
+  const response = await axios.post(`${BASE_URL}/user/verify-otp`, otpData, {
     headers,
   });
-  return response.data; // success or failure message
+
+  return response.data; // contains message, token, username, role
+};
+
+export const runSimulation = async (inputs, token) => {
+    console.log(token)
+    console.log(inputs)
+  const response = await axios.post(`${BASE_URL}/user/get-simulation`, inputs, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  });
+  return response.data;  // Expected: KPIs and results
 };
