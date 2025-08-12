@@ -56,4 +56,4 @@ JWT_ADMIN_SECRET=your_secret
 npm run dev
 
 
-
+The backend will run at: http://localhost:3000
