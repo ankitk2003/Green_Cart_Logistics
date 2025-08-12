@@ -41,11 +41,11 @@ The platform enables logistics managers to:
    git clone https://github.com/yourusername/greencart-logistics.git
    cd greencart-logistics/backend
 
-Install dependencies
-   ````bash
+**Install dependencies**
+```bash
    npm install
 
-Create a .env file in the backend directory:
+**Create a .env file in the backend directory:**
 
 ```bash
 MONGO_URL=
