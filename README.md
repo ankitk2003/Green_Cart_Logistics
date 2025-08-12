@@ -1,7 +1,7 @@
 # GreenCart Logistics
 
 ## 📌 Project Overview
-GreenCart Logistics is a web application designed to optimize delivery management by simulating driver assignments, routes, and order deliveries.  
+GreenCart Logistics is a web application designed to optimize delivery management by simulating driver assignments, routes, and order deliveries.
 
 The platform enables logistics managers to:
 - Monitor operational efficiency
@@ -44,9 +44,7 @@ cd greencart-logistics/backend
 # Install dependencies
 npm install
 
-# Create a .env file in the backend directory
-# and add the following environment variables:
-# (replace with your actual credentials)
+# Create a .env file in the backend directory and add:
 MONGO_URL=your_mongodb_url
 EMAIL_USER=your_email
 EMAIL_PASS=your_password
@@ -54,96 +52,106 @@ JWT_ADMIN_SECRET=your_secret
 
 # Start the backend server
 npm run dev
-
-
-The backend will run at: http://localhost:3000
-
+```
+The backend will run at: **http://localhost:3000**
 
 ---
 
 ### **Frontend Setup**
 ```bash
-# Navigate to the frontend folder
+# Navigate to frontend
 cd ../frontend
 
 # Install dependencies
 npm install
 
-# Create a .env file in the frontend directory
-# and add the following environment variable:
+# Create a .env file in the frontend directory and add:
 VITE_BASE_URL=http://localhost:3000
 
 # Start the frontend development server
 npm run dev
+```
+The frontend will run at: **http://localhost:5173** (or your default Vite port)
 
-Backend (server.env)
+---
 
-| Variable           | Description                       |
-| ------------------ | --------------------------------- |
-| MONGO\_URL         | MongoDB connection string         |
-| EMAIL\_USER        | Email account for notifications   |
-| EMAIL\_PASS        | Password for email account        |
-| JWT\_ADMIN\_SECRET | Secret key for JWT authentication |
+## 🌱 Environment Variables
 
-Frontend (.env)
+### Backend (`.env`)
+| Variable          | Description |
+|-------------------|-------------|
+| `MONGO_URL`       | MongoDB connection string |
+| `EMAIL_USER`      | Email for notifications (if applicable) |
+| `EMAIL_PASS`      | Email password or app-specific password |
+| `JWT_ADMIN_SECRET`| Secret key for JWT authentication |
 
-| Variable        | Description                       |
-| --------------- | --------------------------------- |
-| VITE\_BASE\_URL | Base URL for backend API requests |
+### Frontend (`.env`)
+| Variable        | Description |
+|-----------------|-------------|
+| `VITE_BASE_URL` | Base URL for backend API requests |
 
+---
 
+## 🚀 Deployment Instructions
 
-📡 API Documentation
-Authentication
-POST /api/auth/signup
+### Backend
+- Hosted on **[Platform Name]**
+- Connected to **MongoDB Atlas**
+- Environment variables set in platform dashboard
+- Deployed via **Git push** or **CI/CD pipeline**
+
+### Frontend
+- Hosted on **[Platform Name]** (e.g., Vercel)
+- Environment variables set in platform dashboard
+- Configured to point to deployed backend API
+
+---
+
+## 📡 API Documentation
+
+### **Authentication**
+#### POST `/api/auth/signup`
 Registers a new user.
-Request Body:
-
-json
-Copy
-Edit
+**Request Body:**
+```json
 {
   "name": "John Doe",
   "email": "john@example.com",
   "password": "password123"
 }
-Response:
-
-json
-Copy
-Edit
+```
+**Response:**
+```json
 {
   "message": "Signup successful",
   "userId": "abc123"
 }
-POST /api/auth/login
-Logs in a user and returns JWT token.
-Request Body:
+```
 
-json
-Copy
-Edit
+#### POST `/api/auth/login`
+Logs in a user and returns a JWT token.
+**Request Body:**
+```json
 {
   "email": "john@example.com",
   "password": "password123"
 }
-Response:
-
-json
-Copy
-Edit
+```
+**Response:**
+```json
 {
   "token": "jwt.token.here"
 }
-Drivers
-GET /api/drivers
-Returns all drivers. Requires authentication.
-Headers: Authorization: Bearer <token>
-Response:
+```
 
-json
-Copy
-Edit
+---
+
+### **Drivers**
+#### GET `/api/drivers`
+Returns all drivers. Requires **Authorization** header: `Bearer <token>`
+
+**Response:**
+```json
 [
   {
     "_id": "driverId1",
@@ -152,49 +160,76 @@ Edit
     "past_week_hours": [7, 8, 6, 7, 7, 8, 8]
   }
 ]
-POST /api/drivers
-Creates a new driver. Requires authentication.
-Request Body:
+```
 
-json
-Copy
-Edit
+#### POST `/api/drivers`
+Creates a new driver.
+**Request Body:**
+```json
 {
   "name": "New Driver",
   "shift_hours": 10,
   "past_week_hours": [7,7,7,7,7,7,7]
 }
-Routes
-(Similar to Drivers CRUD)
+```
 
-Orders
-(Similar to Drivers CRUD)
+#### PUT `/api/drivers/:id`
+Updates driver details.
 
-Simulations
-POST /api/simulations
-Runs a new simulation. Requires authentication.
-Request Body:
+#### DELETE `/api/drivers/:id`
+Deletes a driver by ID.
 
-json
-Copy
-Edit
+---
+
+### **Routes**
+Endpoints:
+- `GET /api/routes`
+- `POST /api/routes`
+- `PUT /api/routes/:id`
+- `DELETE /api/routes/:id`
+
+---
+
+### **Orders**
+Endpoints:
+- `GET /api/orders`
+- `POST /api/orders`
+- `PUT /api/orders/:id`
+- `DELETE /api/orders/:id`
+
+---
+
+### **Simulations**
+#### GET `/api/simulations`
+Fetches all simulation results.
+**Response:**
+```json
+[
+  {
+    "_id": "simulationId",
+    "totalProfit": 74416.2,
+    "efficiency": 52,
+    "totalOrders": 50,
+    "onTimeDeliveries": 26,
+    "lateDeliveries": 24,
+    "assignments": [],
+    "createdAt": "2025-08-12T14:00:00.000Z"
+  }
+]
+```
+
+#### POST `/api/simulations`
+Runs a new simulation.
+**Request Body:**
+```json
 {
   "numberOfAvailableDrivers": 5,
   "routeStartTime": "10:24",
   "maxHoursPerDriverPerDay": 5
 }
-Response Example:
+```
 
-json
-Copy
-Edit
-{
-  "_id": "simulationId",
-  "totalProfit": 74416.2,
-  "efficiency": 52,
-  "totalOrders": 50,
-  "onTimeDeliveries": 26,
-  "lateDeliveries": 24,
-  "assignments": [],
-  "createdAt": "2025-08-12T14:00:00.000Z"
-}
+---
+
+## 📜 License
+This project is licensed under the MIT License.
