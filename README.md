@@ -44,3 +44,11 @@ The platform enables logistics managers to:
 Install dependencies
    ````bash
    npm install
+
+Create a .env file in the backend directory:
+
+```bash
+MONGO_URL=
+EMAIL_USER=
+EMAIL_PASS=
+JWT_ADMIN_SECRET=
