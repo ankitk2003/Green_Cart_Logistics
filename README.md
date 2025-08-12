@@ -33,7 +33,7 @@ The platform enables logistics managers to:
 
 ---
 
-## ⚙️ Setup Instructions
+##  Setup Instructions
 
 ### **Backend Setup**
 1. **Clone the repository & install dependencies**
@@ -44,8 +44,12 @@ The platform enables logistics managers to:
 
 
 Create a .env file in the backend directory:
-
+```bash
 MONGO_URL=your_mongodb_url
 EMAIL_USER=your_email
 EMAIL_PASS=your_password
 JWT_ADMIN_SECRET=your_secret
+
+##  **Start the backend server**
+
+
