@@ -22,7 +22,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="home" element={<ProtectedHome/>} />
           {/* <Route path="verify-otp" element={<VerifyOtp />} /> */}
-          {/* <Route index element={<Login />} /> */}
+          <Route index element={<Login />} />
         </Route>
       </Routes>
     </>

@@ -21,7 +21,7 @@ The platform enables logistics managers to:
 - Tailwind CSS (styling)
 
 ### **Backend**
-- Node.js
+- Node.js (Hooks, HOC ,Recoil )
 - Express.js
 - MongoDB with Mongoose
 - JWT for authentication
